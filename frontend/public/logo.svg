@@ -1,0 +1,53 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bubbleGradient" x1="92" y1="126" x2="420" y2="386" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22D3EE"/>
+      <stop offset="0.55" stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+
+    <linearGradient id="boltGradient" x1="248" y1="126" x2="372" y2="382" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#67E8F9"/>
+      <stop offset="0.45" stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#1D4ED8"/>
+    </linearGradient>
+
+    <filter id="softShadow" x="38" y="64" width="436" height="390" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0F172A" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <!-- Realtime chat logo icon only -->
+  <g filter="url(#softShadow)">
+    <!-- Chat bubble -->
+    <path
+      d="M256 104C159.35 104 81 166.71 81 244.08C81 288.63 107.13 328.32 147.87 354L128.2 422L204.21 386.03C220.6 389.97 237.97 392.16 256 392.16C352.65 392.16 431 329.45 431 252.08C431 174.71 352.65 104 256 104Z"
+      fill="url(#bubbleGradient)"
+    />
+
+    <!-- Inner cut shape for cleaner bubble feel -->
+    <path
+      d="M255.8 139C178.35 139 115.56 186.46 115.56 245C115.56 278.56 136.33 308.52 168.68 327.94L157.5 366.5L200.23 346.28C217.16 351.31 235.98 354 255.8 354C333.25 354 396.04 306.54 396.04 248C396.04 189.46 333.25 139 255.8 139Z"
+      fill="white"
+      opacity="0.92"
+    />
+
+    <!-- Chat bubble outline overlay -->
+    <path
+      d="M256 104C159.35 104 81 166.71 81 244.08C81 288.63 107.13 328.32 147.87 354L128.2 422L204.21 386.03C220.6 389.97 237.97 392.16 256 392.16C352.65 392.16 431 329.45 431 252.08C431 174.71 352.65 104 256 104Z"
+      fill="url(#bubbleGradient)"
+      opacity="0.18"
+    />
+
+    <!-- Lightning bolt -->
+    <path
+      d="M307.5 121L209 273.5H282.5L232 397L371.5 222H292.5L307.5 121Z"
+      fill="url(#boltGradient)"
+    />
+
+    <!-- Ellipsis dots -->
+    <circle cx="157" cy="248" r="15" fill="#0F172A"/>
+    <circle cx="207" cy="248" r="15" fill="#0F172A"/>
+    <circle cx="257" cy="248" r="15" fill="#0F172A"/>
+  </g>
+</svg>
