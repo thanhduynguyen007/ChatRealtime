@@ -1,0 +1,43 @@
+# Bỏ qua node_modules của cả 2 bên backend và frontend
+backend/node_modules/
+frontend/node_modules/
+
+# Bỏ qua file cấu hình môi trường bảo mật (chứa mật khẩu database)
+backend/.env
+frontend/.env
+
+# Bỏ qua các file rác của hệ điều hành hoặc VS Code
+.DS_Store
+.vscode/
+dist/
+
+node_modules/
+.env
+!.env.example
+jsconfig.json
+
+# REACT
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
