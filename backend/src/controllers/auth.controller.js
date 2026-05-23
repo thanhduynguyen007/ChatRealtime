@@ -87,7 +87,6 @@ export const signOut = async (req, res) => {
             // xoá cookie
             res.clearCookie('refreshToken')
         }
-
         return res.sendStatus(204)
     } catch (err) {
         console.log("Lỗi khi gọi signIn", err);
