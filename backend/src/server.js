@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 //middleware
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
 //Public routes
 app.use("/api/auth", authRoute)
 //private routes

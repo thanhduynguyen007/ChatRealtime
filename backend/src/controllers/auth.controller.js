@@ -80,8 +80,15 @@ export const signIn = async (req, res) => {
 export const signOut = async (req, res) => {
     try {
         // lấy refresh token từ cookie
-        // Xoá refresh token trogn Session
-        // xoá cookie
+        const token = req.cookies?.refreshToken;
+        if (token) {
+            // Xoá refresh token trogn Session
+            await Session.deleteOne({ refreshToken: token });
+            // xoá cookie
+            res.clearCookie('refreshToken')
+        }
+
+        return res.sendStatus(204)
     } catch (err) {
         console.log("Lỗi khi gọi signIn", err);
         return res.status(500).json({ message: "Lỗi hệ thống" });
