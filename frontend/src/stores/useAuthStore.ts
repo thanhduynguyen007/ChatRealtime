@@ -76,7 +76,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         try {
             const {user, fetchMe, setAccessToken} = get();
             const accessToken = await authService.refresh();
-           setAccessToken(accessToken)
+            setAccessToken(accessToken)
             if(!user) {
                 await fetchMe();
             }
