@@ -4,7 +4,7 @@ import { createConversation, getConversations, getMessages } from '../controller
 
 const router = express.Router();
 
-router.post("/", createConversation);
+router.post("/", checkFriendship, createConversation);
 router.get("/", getConversations);
 router.post("/:conversationId/messages", getMessages);
 export default router;
