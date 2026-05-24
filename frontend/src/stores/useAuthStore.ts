@@ -32,14 +32,8 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         try {
             set({ loading: true });
 
-            const data = await authService.signIn(username, password);
-
-            // console.log("LOGIN RESPONSE:", data);
-
-            set({
-                accessToken: data.accessToken,
-                user: data.user ?? null,
-            });
+           const {accessToken} = await authService.signIn(username, password);
+           get().setAccessToken(accessToken)
             await get().fetchMe();
 
             toast.success("Chào mừng bạn quay trở lại với ChatRealtime");
@@ -77,5 +71,24 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         }finally{
             set({loading: false})
         }
+    },
+    refresh: async() => {
+        try {
+            const {user, fetchMe, setAccessToken} = get();
+            const accessToken = await authService.refresh();
+           setAccessToken(accessToken)
+            if(!user) {
+                await fetchMe();
+            }
+        } catch (error) {
+             console.error(error);
+            get().clearState();
+            toast.error("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại")
+        }finally{
+            set({loading: false})
+        }
+    },
+    setAccessToken: (accessToken) => {
+        set({accessToken});
     }
 }));
