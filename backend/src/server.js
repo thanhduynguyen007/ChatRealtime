@@ -17,7 +17,7 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }))
 app.use("/api/auth", authRoute)
 //private routes
 app.use(protectedRoute);
-app.use("/users", userRoute)
+app.use("/api/users", userRoute)
 
 connectDB().then(() => {
     app.listen(PORT, () => {
