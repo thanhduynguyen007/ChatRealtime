@@ -8,6 +8,9 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useAuthStore } from "@/stores/useAuthStore";
+import { useNavigate } from "react-router";
+
 const signInSchema = z.object({
   username: z.string().min(3, "Tên đăng nhập phải có ít nhất 3 kí tự"),
   password: z.string().min(6, "Mật khẩu phải có ít nhất 6 ký tự"),
@@ -17,12 +20,16 @@ export function SigninForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-
+  const {signIn} = useAuthStore()
+  const navigate = useNavigate()
   const {register, handleSubmit, formState: {errors, isSubmitting}} = useForm<SignInFormValues>({
     resolver: zodResolver(signInSchema)
   });
   const onSubmit = async (data: SignInFormValues) => {
     // Gọi backend để signup
+    const {username, password} = data;
+    await signIn(username, password);
+    navigate('/');
   }
   return (
     <div

@@ -9,6 +9,8 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useAuthStore } from "@/stores/useAuthStore";
+import { useNavigate } from "react-router";
 const signUpSchema = z.object({
   firstname: z.string().min(1, "Tên người dùng không được bỏ trống"),
   lastname: z.string().min(1, "Họ người dùng không được bỏ trống"),
@@ -21,12 +23,16 @@ export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-
+  const {signUp} = useAuthStore();
+  const navigate = useNavigate()
   const {register, handleSubmit, formState: {errors, isSubmitting}} = useForm<SignUpFormValues>({
     resolver: zodResolver(signUpSchema)
   });
   const onSubmit = async (data: SignUpFormValues) => {
     // Gọi backend để signup
+    const {username,password, email, firstname, lastname} = data;
+    await signUp(username, password, email, firstname, lastname);
+    navigate("/signin")
   }
   return (
     <div
