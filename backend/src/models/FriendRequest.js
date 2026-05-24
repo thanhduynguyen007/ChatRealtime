@@ -28,4 +28,4 @@ friendRequestSchema.index({ from: 1 });
 friendRequestSchema.index({ to: 1 });
 
 const FriendRequest = mongoose.model("FriendRequest", friendRequestSchema);
-export const FriendRequest
+export default FriendRequest

@@ -17,11 +17,13 @@ const friendSchema = new mongoose.Schema({
 friendSchema.pre('save', function (next) {
     const a = this.userA.toString();
     const b = this.userB.toString();
+    if (a === b) {
+        throw new Error("Không thể tự kết bạn với chính mình");
+    }
     if (a > b) {
         this.userA = new mongoose.Types.ObjectId(b);
         this.userB = new mongoose.Types.ObjectId(a);
     }
-    next();
 })
 
 friendSchema.index({
@@ -32,4 +34,4 @@ friendSchema.index({
 });
 
 const Friend = mongoose.model("Friend", friendSchema);
-export const Friend
+export default Friend

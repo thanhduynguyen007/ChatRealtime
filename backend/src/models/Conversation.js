@@ -60,10 +60,12 @@ const conversationSchema = new mongoose.Schema({
     lastMessageAt: {
         type: Date,
     },
-    seenBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-    },
+    seenBy: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        },
+    ],
     lastMessage: {
         type: lastMessageSchema,
         default: null
