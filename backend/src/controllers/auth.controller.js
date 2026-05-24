@@ -115,7 +115,7 @@ export const refreshToken = async (req, res) => {
         //tạo accesstoken mới
         const accessToken = await jwt.sign({
             userId: session.userId,
-        }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: ACCESS_TOKEN_TTL });
+        }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.ACCESS_TOKEN_TTL });
 
         //return
         return res.status(200).json({ accessToken });
